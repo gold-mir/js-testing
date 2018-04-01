@@ -17,7 +17,7 @@ describe('AgeCalculator utilities', function(){
     let now = new Date(1522551468624);
     ageCalc.now = now;
 
-    let myAge = ageCalc.getAge(myBirthday);
+    let myAge = ageCalc.getAge(myBirthday.year, myBirthday.month, myBirthday.day);
     expect(myAge).toEqual(21);
   });
 

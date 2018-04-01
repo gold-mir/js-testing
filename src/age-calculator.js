@@ -1,12 +1,12 @@
 export class AgeCalculator {
 
   constructor(){
-    this.now = Date.now();
+    this.now = new Date(Date.now());
   }
 
-  getAge(bdayObj){
+  getAge(year, month, day){
     const secondsInYear = 31556952;
-    let birthday = new Date(`${bdayObj.year}-${bdayObj.month}-${bdayObj.day}`);
+    let birthday = new Date(`${year}-${month}-${day}`);
     let ageInSeconds = this.getTimeDifference(this.now, birthday);
     return Math.floor(ageInSeconds / secondsInYear);
   }
