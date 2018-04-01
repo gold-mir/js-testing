@@ -4,7 +4,7 @@
   "description": "blank npm server template",
   "main": "main.js",
   "scripts": {
-    "test": "jasmine",
+    "test": "karma start karma.conf.js",
     "build": "webpack --mode development",
     "start": "webpack-dev-server --open"
   },

@@ -1,1 +1,1 @@
-console.log("loaded");
+import { AgeCalculator } from './age-calculator';
