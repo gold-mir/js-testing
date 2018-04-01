@@ -31,11 +31,38 @@ describe('AgeCalculator utilities', function(){
 });
 
 describe('AgeCalculator.ageOn()', function(){
+  let ageCalc;
+  let ageOn;
+
   beforeEach(function(){
     ageCalc = new AgeCalculator();
+    ageCalc.setAge(21);
+    ageOn = ageCalc.ageOn();
+  });
+
+  it('should let you set your age', function(){
+    ageCalc.setAge(40);
+    expect(ageCalc.age).toEqual(40);
   });
 
   it('should return an object', function(){
-    // let ageOn = ageCalc.ageOn()
+    expect(typeof ageOn).toEqual('object');
   });
+
+  it('should convert to mercury years', function(){
+    expect(ageOn.mercury).toEqual(21/.24);
+  });
+
+  it('should convert to venus years', function(){
+    expect(ageOn.venus).toEqual(21/.62);
+  });
+
+  it('should convert to mars years', function(){
+    expect(ageOn.mars).toEqual(21/1.88);
+  });
+
+  it('should convert to jupiter years', function(){
+    expect(ageOn.jupiter).toEqual(21/11.86);
+  });
+
 });
