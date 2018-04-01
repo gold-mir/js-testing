@@ -1,4 +1,9 @@
 export class AgeCalculator {
+
+  constructor(){
+    this.now = Date.now();
+  }
+
   getAgeInSeconds(age){
     const secondsInYear = 31556952;
     return age * secondsInYear;
@@ -9,5 +14,8 @@ export class AgeCalculator {
     let date2MS = date2.getTime();
 
     return Math.floor((date1MS - date2MS)/1000);
+  }
+  ageOn(age){
+
   }
 }
