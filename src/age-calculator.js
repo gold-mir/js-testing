@@ -8,7 +8,7 @@ export class AgeCalculator {
     const secondsInYear = 31556952;
     let birthday = new Date(`${bdayObj.year}-${bdayObj.month}-${bdayObj.day}`);
     let ageInSeconds = this.getTimeDifference(this.now, birthday);
-    return Math.floor(ageInSeconds / secondsInYear)
+    return Math.floor(ageInSeconds / secondsInYear);
   }
 
   getAgeInSeconds(age){
@@ -27,17 +27,36 @@ export class AgeCalculator {
     this.age = age;
   }
 
-  ageOn(age = this.age){
+  getConversions(){
     let conversions = {
       mercury: .24,
       venus: .62,
       mars: 1.88,
       jupiter: 11.86
     };
+    return conversions;
+  }
+
+  ageOn(age = this.age){
+    let conversions = this.getConversions();
     let ages = {};
     Object.keys(conversions).forEach(function(key){
       ages[key] = age / conversions[key];
     });
     return ages;
+  }
+
+  getTimeLeft(lifeExpectancy){
+    let conversions = this.getConversions();
+    let timeLeft = {};
+    let earthTimeLeft = lifeExpectancy - this.age;
+    timeLeft.earth = earthTimeLeft;
+    if(earthTimeLeft < 0){
+      return `You've already past your expected lifespan by ${-earthTimeLeft} years. Good Job!`;
+    }
+    Object.keys(conversions).forEach(function(key){
+      timeLeft[key] = earthTimeLeft / conversions[key];
+    });
+    return timeLeft;
   }
 }

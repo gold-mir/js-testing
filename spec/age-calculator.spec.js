@@ -64,5 +64,29 @@ describe('AgeCalculator.ageOn()', function(){
   it('should convert to jupiter years', function(){
     expect(ageOn.jupiter).toEqual(21/11.86);
   });
+});
 
+describe('AgeCalculator.getTimeLeft()', function(){
+  let ageCalc;
+  let timeLeft;
+
+  beforeEach(function(){
+    ageCalc = new AgeCalculator();
+    ageCalc.setAge(21);
+    timeLeft = ageCalc.getTimeLeft(80);
+  });
+
+  it('should tell you how much time you have left to live on various planets', function(){
+    expect(timeLeft.mercury).toEqual(245.83333333333334);
+    expect(timeLeft.venus).toEqual(95.16129032258064);
+    expect(timeLeft.earth).toEqual(59);
+    expect(timeLeft.mars).toEqual(31.382978723404257);
+    expect(timeLeft.jupiter).toEqual(4.974704890387859);
+  });
+
+  it("should return an error message if you've passed your expected lifespan already", function(){
+    ageCalc.setAge(9000);
+    timeLeft = ageCalc.getTimeLeft(80);
+    expect(typeof timeLeft).toEqual("string");
+  });
 });
